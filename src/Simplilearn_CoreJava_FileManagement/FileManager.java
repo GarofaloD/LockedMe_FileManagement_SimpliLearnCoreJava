@@ -61,7 +61,8 @@ public class FileManager {
     public File searchFiles(String fileName){
 
         for(int i = 0; i < filesinWorkingFolder.size(); i++){
-            if(filesinWorkingFolder.get(i).getAbsolutePath().equals(fileName)){
+//            if(filesinWorkingFolder.get(i).getAbsolutePath().equals(fileName)){
+            if(filesinWorkingFolder.get(i).getAbsolutePath().equalsIgnoreCase(fileName.toLowerCase())){
                 return filesinWorkingFolder.get(i);
             }
         }
