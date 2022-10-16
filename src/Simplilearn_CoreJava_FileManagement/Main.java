@@ -130,10 +130,18 @@ public class Main {
 
     //File Operations
     private static void searchFile() {
-    }
 
-    private static void deleteFile() {
-        
+        System.out.println("Please, type the name of the file (remember to add the extension)");
+        String fileName = scanner.nextLine();
+
+        boolean result = fileManager.onFileList(fileName);
+
+        if(result){
+            System.out.println("Found " + fileName + " in the folder");
+        } else {
+            System.out.println("File not found on the folder");
+        }
+
     }
 
     private static void addFile() throws IOException {
@@ -144,6 +152,12 @@ public class Main {
         fileManager.addFiles(fileName);
 
     }
+
+
+    private static void deleteFile() {
+
+    }
+
 
 
 

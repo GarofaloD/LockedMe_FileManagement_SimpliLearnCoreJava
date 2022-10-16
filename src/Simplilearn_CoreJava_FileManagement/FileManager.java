@@ -1,7 +1,6 @@
 package Simplilearn_CoreJava_FileManagement;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -59,7 +58,28 @@ public class FileManager {
         }
     }
 
+    public File searchFiles(String fileName){
 
+        for(int i = 0; i < filesinWorkingFolder.size(); i++){
+            if(filesinWorkingFolder.get(i).getAbsolutePath().equals(fileName)){
+                return filesinWorkingFolder.get(i);
+            }
+        }
+
+        return null;
+    }
+
+    public boolean onFileList(String fileToRetrieve){
+
+        String fileToFindFullPath = workingFolder.getAbsolutePath() + "/" + fileToRetrieve;
+        File fileToFind = searchFiles(fileToFindFullPath);
+
+        if(fileToFind != null){
+            return true;
+        }
+
+        return false;
+    }
 
 
 }
