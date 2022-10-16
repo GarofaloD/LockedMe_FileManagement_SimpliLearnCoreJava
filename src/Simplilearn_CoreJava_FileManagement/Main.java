@@ -1,12 +1,13 @@
 package Simplilearn_CoreJava_FileManagement;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
     private static Scanner scanner = new Scanner(System.in);
-    File workingFolder;
+    private static FileManager fileManager = new FileManager();
 
     public static void main(String[] args) throws Exception {
 
@@ -41,6 +42,7 @@ public class Main {
 
 
 
+
     //Menus
     private static void initiatingMenu(){
         System.out.println("------LockedMe.com------");
@@ -66,26 +68,7 @@ public class Main {
         System.out.println("4.Exit to Main Menu");
     }
 
-
-    private static void folderSelection() {
-
-        File fileLocation = null;
-
-        System.out.println("Please, type the location for your files");
-        fileLocation = new File(scanner.nextLine());
-
-        if(fileLocation.exists()){
-            System.out.println("Location found. Taking you to the main menu.");
-            showMainMenu();
-        } else {
-            System.out.println("Location does not exist. Make sure the location exists in your computer.");
-//            initiatingMenu();
-        }
-
-    }
-
-
-    private static void showMainMenu() {
+    private static void showMainMenu() throws Exception{
 
         boolean quitToInitiating = false;
         String userInput2;
@@ -104,7 +87,7 @@ public class Main {
             choice2 = Integer.parseInt(userInput2);
 
             switch (choice2) {
-                case 1 -> listFiles();
+                case 1 -> fileManager.listFiles();
                 case 2 -> showOperationsMenu();
                 case 3 -> quitToInitiating = true;
                 default -> wrongOptionMessage();
@@ -112,10 +95,7 @@ public class Main {
         }
     }
 
-
-
-
-    private static void showOperationsMenu(){
+    private static void showOperationsMenu() throws IOException {
 
         boolean quitToMain = false;
         String userInput3;
@@ -144,6 +124,11 @@ public class Main {
         }
     }
 
+
+
+
+
+    //File Operations
     private static void searchFile() {
     }
 
@@ -151,11 +136,16 @@ public class Main {
         
     }
 
-    private static void addFile() {
+    private static void addFile() throws IOException {
+
+        System.out.println("Please, enter the name of the file (remember to add an extension at the end):");
+        String fileName = scanner.nextLine();
+
+        fileManager.addFiles(fileName);
+
     }
 
-    private static void listFiles() {
-    }
+
 
 
 
@@ -180,6 +170,24 @@ public class Main {
     //Wrong option message
     private static void wrongOptionMessage() {
         System.out.println("Wrong option! Please, select one of the items in the prompt");
+    }
+
+    private static void folderSelection() throws Exception {
+
+        File fileLocation = null;
+
+        System.out.println("Please, type the location for your files");
+        fileLocation = new File(scanner.nextLine());
+
+        if(fileLocation.exists()){
+            System.out.println("Location found. Taking you to the main menu.");
+            fileManager.setWorkingFolder(fileLocation);
+            showMainMenu();
+        } else {
+            System.out.println("Location does not exist. Make sure the location exists in your computer.");
+//            initiatingMenu();
+        }
+
     }
 
 }
