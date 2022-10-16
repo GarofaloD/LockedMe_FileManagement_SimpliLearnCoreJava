@@ -3,6 +3,9 @@ package Simplilearn_CoreJava_FileManagement;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ListIterator;
@@ -46,7 +49,6 @@ public class FileManager {
             String newFileFullPath = workingFolder.getAbsolutePath() + "/" +fileName;
             File fileToAdd = new File(newFileFullPath);
 
-
             FileOutputStream fos = new FileOutputStream(fileToAdd);
             fos.close();
             filesinWorkingFolder.add(fileToAdd);
@@ -54,14 +56,32 @@ public class FileManager {
         } else {
             System.out.println("No such working folder");
 
+        }
+    }
+
+    public void removeFile(String fileName) throws IOException {
+
+        if(workingFolder != null){
+
+            String fileFullPath = workingFolder.getAbsolutePath() + "/" +fileName;
+            File fileToRemove = searchFiles(fileFullPath);
+
+            if(fileToRemove != null){
+                Files.deleteIfExists(fileToRemove.toPath());
+                filesinWorkingFolder.remove(fileToRemove);
+            }
+
+
+        } else {
+            System.out.println("No such working folder");
 
         }
     }
 
+
     public File searchFiles(String fileName){
 
         for(int i = 0; i < filesinWorkingFolder.size(); i++){
-//            if(filesinWorkingFolder.get(i).getAbsolutePath().equals(fileName)){
             if(filesinWorkingFolder.get(i).getAbsolutePath().equalsIgnoreCase(fileName.toLowerCase())){
                 return filesinWorkingFolder.get(i);
             }
@@ -81,6 +101,9 @@ public class FileManager {
 
         return false;
     }
+
+
+
 
 
 }

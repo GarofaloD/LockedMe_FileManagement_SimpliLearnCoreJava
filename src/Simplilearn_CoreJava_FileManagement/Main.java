@@ -149,12 +149,38 @@ public class Main {
         System.out.println("Please, enter the name of the file (remember to add an extension at the end):");
         String fileName = scanner.nextLine();
 
-        fileManager.addFiles(fileName);
+        if(fileManager.onFileList(fileName)){
+            System.out.println("File is already on the folder");
+        } else {
+            fileManager.addFiles(fileName);
+        }
 
     }
 
 
-    private static void deleteFile() {
+    private static void deleteFile() throws IOException {
+
+        Scanner deleteChoice = new Scanner(System.in);
+
+        System.out.println("Please, enter the name of the file (remember to add an extension at the end):");
+        String fileName = scanner.nextLine();
+
+        boolean result = fileManager.onFileList(fileName);
+
+        if(result){
+            System.out.println("Are you sure you want to delete the file? ");
+            System.out.println("Y/N?");
+            String response = deleteChoice.next().toLowerCase();
+
+            if(response.equals("y")){
+                fileManager.removeFile(fileName);
+            } else {
+                System.out.println("Exiting feature...");
+            }
+
+        } else {
+            System.out.println("File not found on the folder");
+        }
 
     }
 
