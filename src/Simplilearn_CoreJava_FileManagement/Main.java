@@ -6,8 +6,11 @@ import java.util.Scanner;
 
 public class Main {
 
+    //Properties
     private static Scanner scanner = new Scanner(System.in);
     private static FileManager fileManager = new FileManager();
+
+
 
     public static void main(String[] args) throws Exception {
 
@@ -39,11 +42,6 @@ public class Main {
         }
     }
 
-
-
-
-
-
     //Menus functionality
     private static void showMainMenu() throws Exception{
 
@@ -55,6 +53,7 @@ public class Main {
             mainMenu();
 
             userInput2 = scanner.nextLine();
+
             while (containsString(userInput2)){
                 wrongOptionMessage();
                 mainMenu();

@@ -25,9 +25,6 @@ public class FileManager {
 
         if(workingFolder != null){
 
-//            //Collection to manage the files
-//            ArrayList<File> filesinWorkingFolder = new ArrayList<File>(Arrays.asList(workingFolder.listFiles()));
-
             //Iterator for the collection
             ListIterator<File> iterator = filesinWorkingFolder.listIterator();
 
@@ -70,7 +67,6 @@ public class FileManager {
                 Files.deleteIfExists(fileToRemove.toPath());
                 filesinWorkingFolder.remove(fileToRemove);
             }
-
 
         } else {
             System.out.println("No such working folder");
