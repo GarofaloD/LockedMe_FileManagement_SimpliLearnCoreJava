@@ -16,11 +16,9 @@ public class Main {
         int choice1;
         String userInput;
 
-        //Initial menu will display
-        initiatingMenu();
-
-
         while (!quitProgram){
+            initiatingMenu();
+
             userInput = scanner.nextLine();
 
             //Input verification
@@ -36,6 +34,7 @@ public class Main {
             switch (choice1) {
                 case 1 -> folderSelection();
                 case 2 -> quitProgram = true;
+                default -> wrongOptionMessage();
             }
         }
     }
@@ -43,31 +42,9 @@ public class Main {
 
 
 
-    //Menus
-    private static void initiatingMenu(){
-        System.out.println("------LockedMe.com------");
-        System.out.println("Enter your choice:");
-        System.out.println("1.Input folder location");
-        System.out.println("2.Exit Program");
-    }
 
-    private static void mainMenu(){
-        System.out.println("------Main Menu------");
-        System.out.println("Select your option:");
-        System.out.println(" 1.List files in your location");
-        System.out.println(" 2.File Operations");
-        System.out.println(" 3.Exit Program");
-    }
 
-    private static void opsMenu(){
-        System.out.println("------Operations Menu------");
-        System.out.println("Select your options:");
-        System.out.println("1.Add a new file");
-        System.out.println("2.Delete a file");
-        System.out.println("3.Search for a file");
-        System.out.println("4.Exit to Main Menu");
-    }
-
+    //Menus functionality
     private static void showMainMenu() throws Exception{
 
         boolean quitToInitiating = false;
@@ -110,7 +87,6 @@ public class Main {
                 opsMenu();
                 userInput3 = scanner.nextLine();
             }
-
 
             choice3 = Integer.parseInt(userInput3);
 
@@ -157,7 +133,6 @@ public class Main {
 
     }
 
-
     private static void deleteFile() throws IOException {
 
         Scanner deleteChoice = new Scanner(System.in);
@@ -183,7 +158,6 @@ public class Main {
         }
 
     }
-
 
 
 
@@ -225,10 +199,39 @@ public class Main {
             showMainMenu();
         } else {
             System.out.println("Location does not exist. Make sure the location exists in your computer.");
-//            initiatingMenu();
         }
 
     }
+
+
+
+    //Menus - Text
+    private static void initiatingMenu(){
+        System.out.println("---------LockedMe.com--------");
+        System.out.println("------Initializing Menu------");
+        System.out.println("Select your option:");
+        System.out.println("1.Input folder location");
+        System.out.println("2.Exit Program");
+    }
+
+    private static void mainMenu(){
+        System.out.println("------Main Menu------");
+        System.out.println("Select your option:");
+        System.out.println(" 1.List files in your location");
+        System.out.println(" 2.File Operations");
+        System.out.println(" 3.Go back to Initializing Menu ");
+    }
+
+    private static void opsMenu(){
+        System.out.println("------Operations Menu------");
+        System.out.println("Select your options:");
+        System.out.println("1.Add a new file");
+        System.out.println("2.Delete a file");
+        System.out.println("3.Search for a file");
+        System.out.println("4.Exit to Main Menu");
+    }
+
+
 
 }
 
