@@ -149,6 +149,7 @@ public class Main {
 
             if(response.equals("y")){
                 fileManager.removeFile(fileName);
+                System.out.println("File deleted");
             } else {
                 System.out.println("Exiting feature...");
             }
