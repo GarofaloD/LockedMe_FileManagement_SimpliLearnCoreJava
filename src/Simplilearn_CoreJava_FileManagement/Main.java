@@ -128,6 +128,7 @@ public class Main {
             System.out.println("File is already on the folder");
         } else {
             fileManager.addFiles(fileName);
+            System.out.println(fileName + " successfully added!");
         }
 
     }

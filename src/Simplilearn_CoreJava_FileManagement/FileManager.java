@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.ListIterator;
 
 public class FileManager {
@@ -25,11 +26,10 @@ public class FileManager {
 
         if(workingFolder != null){
 
-            //Iterator for the collection
-            ListIterator<File> iterator = filesinWorkingFolder.listIterator();
+            Collections.sort(filesinWorkingFolder);
 
-            while (iterator.hasNext()){
-                System.out.println(iterator.next());
+            for(File file : filesinWorkingFolder){
+                System.out.println(file);
             }
 
         } else {
