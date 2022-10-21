@@ -191,11 +191,11 @@ public class Main {
 
         File fileLocation = null;
 
-        System.out.println("Please, type the location for your files");
+        System.out.println("Please, specify the path of the working folder:");
         fileLocation = new File(scanner.nextLine());
 
         if(fileLocation.exists()){
-            System.out.println("Location found. Taking you to the main menu.");
+            System.out.println("Location found. Taking you to the main menu...");
             fileManager.setWorkingFolder(fileLocation);
             showMainMenu();
         } else {
@@ -209,6 +209,7 @@ public class Main {
     //Menus - Text
     private static void initiatingMenu(){
         System.out.println("---------LockedMe.com--------");
+        System.out.println("-Developer: Daniel Garofalo - Cohort: MS FSD Sept 2022 Cohort 1-");
         System.out.println("------Initializing Menu------");
         System.out.println("Select your option:");
         System.out.println("1.Input folder location");
